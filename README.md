@@ -4,7 +4,8 @@ Automatic internet payment script using Cashu tokens via cocod.
 
 ## Setup
 
-1. Install [bun](https://bun.sh)
+1. Run the initial setup script: `./initial_setup.sh`
+2. Install [bun](https://bun.sh)
 2. Install [cocod](https://github.com/Egge21M/cocod)
 3. Fund your cocod wallet with sats
 
