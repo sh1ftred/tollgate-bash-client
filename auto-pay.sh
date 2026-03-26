@@ -2,7 +2,8 @@
 # Auto-pay internet with usage tracking
 # Uses offline tokens first, refills stash after each successful payment
 
-TOLLGATE_HOST="172.19.217.1"
+# TOLLGATE_HOST="172.19.217.1"
+TOLLGATE_HOST="172.21.102.1"
 PORT="2121"
 URL="http://${TOLLGATE_HOST}:${PORT}"
 INTERVAL=2
@@ -13,13 +14,13 @@ OFFLINE_TOKENS_FILE="offline_cashu.txt"
 get_pricing() {
     curl -s "${URL}" | jq '{
         step_size: (.tags[] | select(.[0] == "step_size") | .[1] | tonumber),
-        price_per_step: (.tags[] | select(.[0] == "price_per_step") | .[2] | tonumber)
+        price_per_step: (first(.tags[] | select(.[0] == "price_per_step")) | .[2] | tonumber)
     }'
 }
 
 # Get local bytes on en0
 get_local_bytes() {
-    netstat -ib | grep -E '^en0' | awk '{print $7, $10}'
+    netstat -ib | grep -E '^en0' | head -1 | awk '{print $5, $7}'
 }
 
 # Pay with cashu token

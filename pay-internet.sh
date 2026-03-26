@@ -5,7 +5,8 @@
 #
 # Example: ./pay-internet.sh "cashuA..."
 
-TOLLGATE_HOST="172.19.217.1"
+# TOLLGATE_HOST="172.19.217.1"
+TOLLGATE_HOST="172.21.102.1"
 PORT="${PORT:-2121}"
 URL="http://${TOLLGATE_HOST}:${PORT}/"
 
